@@ -22,6 +22,9 @@ def parseTeam(teamString):
                 currentPokemonDict['Species'] = attribute[0].strip()
                 if '(' in currentPokemonDict['Species']:
                     currentPokemonDict['Species'] = re.search(r'\(([^)]+)', currentPokemonDict['Species']).group(1)
+                    if len(currentPokemonDict['Species']) == 1:
+                        temp = attribute[0].split('(')[0]
+                        currentPokemonDict['Species'] = temp.strip()
                 currentPokemonDict['Item'] = attribute[1].strip()
             if 'Nature' in attribute:
                 attribute = attribute.strip()
@@ -43,15 +46,14 @@ def parseTeam(teamString):
 
 
 if __name__ == "__main__":
-    exampleSet = """bruh (Hawlucha) @ Psychic Seed  
-    Ability: Unburden  
-    Shiny: Yes  
-    EVs: 252 Atk / 4 SpD / 252 Spe  
+    exampleSet = """Tyranitar (M) @ Assault Vest  
+    Ability: Sand Stream  
+    EVs: 252 HP / 252 Atk / 4 SpD  
     Adamant Nature  
-    - Acrobatics  
-    - Drain Punch  
-    - Swords Dance  
-    - Substitute  """
+    - Stone Edge  
+    - Stealth Rock  
+    - Crunch  
+    - Earthquake"""
 
     exampleTeam = """Grimmsnarl @ Light Clay  
     Ability: Prankster  
