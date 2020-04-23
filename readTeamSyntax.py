@@ -34,6 +34,12 @@ def parseTeam(teamString):
                 currentPokemonDict['Move'+str(moveCounter)] = attribute.split('-')[1].strip()
                 moveCounter += 1
             if 'EVs' in attribute:
+                currentPokemonDict['HPEVs'] = 0
+                currentPokemonDict['AtkEVs'] = 0
+                currentPokemonDict['DefEVs'] = 0
+                currentPokemonDict['SpAEVs'] = 0
+                currentPokemonDict['SpDEVs'] = 0
+                currentPokemonDict['SpeEVs'] = 0
                 attribute = attribute.split(':')
                 attribute = attribute[1].split('/')
                 for item in attribute:
