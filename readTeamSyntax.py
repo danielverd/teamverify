@@ -3,7 +3,7 @@ import re
 def parseTeam(teamString):
     """Parse strings for data from official Pokemon Showdown format.
 
-    Keyword arguemnts:
+    Keyword arguemnts:\n
     teamString -- a team string, copied from pokepaste or pokemon showdown
     """
     pokemonList = teamString.split('\n\n')
