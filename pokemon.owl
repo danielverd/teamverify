@@ -27,6 +27,7 @@
 
     <owl:ObjectProperty rdf:about="http://web.cs.miami.edu/home/dver751/csc751/pokemon#hasAbility">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
         <rdfs:domain rdf:resource="http://web.cs.miami.edu/home/dver751/csc751/pokemon#Pokemon"/>
         <rdfs:range rdf:resource="http://web.cs.miami.edu/home/dver751/csc751/pokemon#Abilities"/>
     </owl:ObjectProperty>
@@ -49,6 +50,7 @@
     <!-- http://web.cs.miami.edu/home/dver751/csc751/pokemon#hasItem -->
 
     <owl:ObjectProperty rdf:about="http://web.cs.miami.edu/home/dver751/csc751/pokemon#hasItem">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
         <rdfs:domain rdf:resource="http://web.cs.miami.edu/home/dver751/csc751/pokemon#Pokemon"/>
         <rdfs:range rdf:resource="http://web.cs.miami.edu/home/dver751/csc751/pokemon#Items"/>
     </owl:ObjectProperty>
@@ -61,15 +63,6 @@
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
         <rdfs:domain rdf:resource="http://web.cs.miami.edu/home/dver751/csc751/pokemon#Pokemon"/>
         <rdfs:range rdf:resource="http://web.cs.miami.edu/home/dver751/csc751/pokemon#Moves"/>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- http://web.cs.miami.edu/home/dver751/csc751/pokemon#hasNature -->
-
-    <owl:ObjectProperty rdf:about="http://web.cs.miami.edu/home/dver751/csc751/pokemon#hasNature">
-        <rdfs:domain rdf:resource="http://web.cs.miami.edu/home/dver751/csc751/pokemon#Pokemon"/>
-        <rdfs:range rdf:resource="http://web.cs.miami.edu/home/dver751/csc751/pokemon#Natures"/>
     </owl:ObjectProperty>
     
 
@@ -94,6 +87,7 @@
     <!-- http://web.cs.miami.edu/home/dver751/csc751/pokemon#hasSpecies -->
 
     <owl:ObjectProperty rdf:about="http://web.cs.miami.edu/home/dver751/csc751/pokemon#hasSpecies">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
         <rdfs:domain rdf:resource="http://web.cs.miami.edu/home/dver751/csc751/pokemon#Pokemon"/>
         <rdfs:range rdf:resource="http://web.cs.miami.edu/home/dver751/csc751/pokemon#Pokemon"/>
     </owl:ObjectProperty>
@@ -104,6 +98,7 @@
 
     <owl:ObjectProperty rdf:about="http://web.cs.miami.edu/home/dver751/csc751/pokemon#hasType">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:domain rdf:resource="http://web.cs.miami.edu/home/dver751/csc751/pokemon#Pokemon"/>
         <rdfs:range rdf:resource="http://web.cs.miami.edu/home/dver751/csc751/pokemon#ElementalTypings"/>
     </owl:ObjectProperty>
     
@@ -188,24 +183,6 @@
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
         <rdfs:domain rdf:resource="http://web.cs.miami.edu/home/dver751/csc751/pokemon#Pokemon"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- http://web.cs.miami.edu/home/dver751/csc751/pokemon#hasMoveAccuracy -->
-
-    <owl:DatatypeProperty rdf:about="http://web.cs.miami.edu/home/dver751/csc751/pokemon#hasMoveAccuracy">
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-        <rdfs:domain rdf:resource="http://web.cs.miami.edu/home/dver751/csc751/pokemon#Moves"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- http://web.cs.miami.edu/home/dver751/csc751/pokemon#hasMovePower -->
-
-    <owl:DatatypeProperty rdf:about="http://web.cs.miami.edu/home/dver751/csc751/pokemon#hasMovePower">
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-        <rdfs:domain rdf:resource="http://web.cs.miami.edu/home/dver751/csc751/pokemon#Moves"/>
     </owl:DatatypeProperty>
     
 
@@ -1440,14 +1417,6 @@
     
 
 
-    <!-- http://web.cs.miami.edu/home/dver751/csc751/pokemon#Natures -->
-
-    <owl:Class rdf:about="http://web.cs.miami.edu/home/dver751/csc751/pokemon#Natures">
-        <rdfs:subClassOf rdf:resource="http://web.cs.miami.edu/home/dver751/csc751/pokemon#GameMechanics"/>
-    </owl:Class>
-    
-
-
     <!-- http://web.cs.miami.edu/home/dver751/csc751/pokemon#NormalPokemon -->
 
     <owl:Class rdf:about="http://web.cs.miami.edu/home/dver751/csc751/pokemon#NormalPokemon">
@@ -1555,21 +1524,6 @@
             </owl:Class>
         </owl:equivalentClass>
         <rdfs:subClassOf rdf:resource="http://web.cs.miami.edu/home/dver751/csc751/pokemon#Pokemon"/>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://web.cs.miami.edu/home/dver751/csc751/pokemon#hasAtkEVs"/>
-                <owl:someValuesFrom>
-                    <rdfs:Datatype>
-                        <owl:onDatatype rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
-                        <owl:withRestrictions rdf:parseType="Collection">
-                            <rdf:Description>
-                                <xsd:minInclusive rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">200</xsd:minInclusive>
-                            </rdf:Description>
-                        </owl:withRestrictions>
-                    </rdfs:Datatype>
-                </owl:someValuesFrom>
-            </owl:Restriction>
-        </rdfs:subClassOf>
     </owl:Class>
     
 
@@ -1761,22 +1715,6 @@
     
 
 
-    <!-- http://web.cs.miami.edu/home/dver751/csc751/pokemon#RainPokemon -->
-
-    <owl:Class rdf:about="http://web.cs.miami.edu/home/dver751/csc751/pokemon#RainPokemon">
-        <rdfs:subClassOf rdf:resource="http://web.cs.miami.edu/home/dver751/csc751/pokemon#WeatherPokemon"/>
-    </owl:Class>
-    
-
-
-    <!-- http://web.cs.miami.edu/home/dver751/csc751/pokemon#RainTeams -->
-
-    <owl:Class rdf:about="http://web.cs.miami.edu/home/dver751/csc751/pokemon#RainTeams">
-        <rdfs:subClassOf rdf:resource="http://web.cs.miami.edu/home/dver751/csc751/pokemon#WeatherTeams"/>
-    </owl:Class>
-    
-
-
     <!-- http://web.cs.miami.edu/home/dver751/csc751/pokemon#RockPokemon -->
 
     <owl:Class rdf:about="http://web.cs.miami.edu/home/dver751/csc751/pokemon#RockPokemon">
@@ -1854,22 +1792,6 @@
                 <owl:hasValue rdf:resource="http://web.cs.miami.edu/home/dver751/csc751/pokemon#tyWater"/>
             </owl:Restriction>
         </rdfs:subClassOf>
-    </owl:Class>
-    
-
-
-    <!-- http://web.cs.miami.edu/home/dver751/csc751/pokemon#SandPokemon -->
-
-    <owl:Class rdf:about="http://web.cs.miami.edu/home/dver751/csc751/pokemon#SandPokemon">
-        <rdfs:subClassOf rdf:resource="http://web.cs.miami.edu/home/dver751/csc751/pokemon#WeatherPokemon"/>
-    </owl:Class>
-    
-
-
-    <!-- http://web.cs.miami.edu/home/dver751/csc751/pokemon#SandTeams -->
-
-    <owl:Class rdf:about="http://web.cs.miami.edu/home/dver751/csc751/pokemon#SandTeams">
-        <rdfs:subClassOf rdf:resource="http://web.cs.miami.edu/home/dver751/csc751/pokemon#WeatherTeams"/>
     </owl:Class>
     
 
@@ -2372,14 +2294,6 @@
     
 
 
-    <!-- http://web.cs.miami.edu/home/dver751/csc751/pokemon#WeatherTeams -->
-
-    <owl:Class rdf:about="http://web.cs.miami.edu/home/dver751/csc751/pokemon#WeatherTeams">
-        <rdfs:subClassOf rdf:resource="http://web.cs.miami.edu/home/dver751/csc751/pokemon#Playstyles"/>
-    </owl:Class>
-    
-
-
     <!-- 
     ///////////////////////////////////////////////////////////////////////////////////////
     //
@@ -2451,8 +2365,6 @@
 
     <owl:NamedIndividual rdf:about="http://web.cs.miami.edu/home/dver751/csc751/pokemon#mvBounce">
         <rdf:type rdf:resource="http://web.cs.miami.edu/home/dver751/csc751/pokemon#Moves"/>
-        <hasMoveAccuracy rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">85</hasMoveAccuracy>
-        <hasMovePower rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">85</hasMovePower>
     </owl:NamedIndividual>
     
 
@@ -2526,7 +2438,6 @@
 
     <owl:NamedIndividual rdf:about="http://web.cs.miami.edu/home/dver751/csc751/pokemon#mvDragonDance">
         <rdf:type rdf:resource="http://web.cs.miami.edu/home/dver751/csc751/pokemon#SpeedBoostingMoves"/>
-        <hasMoveAccuracy rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">100</hasMoveAccuracy>
     </owl:NamedIndividual>
     
 
@@ -2535,8 +2446,6 @@
 
     <owl:NamedIndividual rdf:about="http://web.cs.miami.edu/home/dver751/csc751/pokemon#mvEarthquake">
         <rdf:type rdf:resource="http://web.cs.miami.edu/home/dver751/csc751/pokemon#Moves"/>
-        <hasMoveAccuracy rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">100</hasMoveAccuracy>
-        <hasMovePower rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">100</hasMovePower>
     </owl:NamedIndividual>
     
 
@@ -2593,8 +2502,6 @@
 
     <owl:NamedIndividual rdf:about="http://web.cs.miami.edu/home/dver751/csc751/pokemon#mvIronHead">
         <rdf:type rdf:resource="http://web.cs.miami.edu/home/dver751/csc751/pokemon#Moves"/>
-        <hasMoveAccuracy rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">100</hasMoveAccuracy>
-        <hasMovePower rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">80</hasMovePower>
     </owl:NamedIndividual>
     
 
@@ -2603,8 +2510,6 @@
 
     <owl:NamedIndividual rdf:about="http://web.cs.miami.edu/home/dver751/csc751/pokemon#mvLavaPlume">
         <rdf:type rdf:resource="http://web.cs.miami.edu/home/dver751/csc751/pokemon#Moves"/>
-        <hasMoveAccuracy rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">100</hasMoveAccuracy>
-        <hasMovePower rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">80</hasMovePower>
     </owl:NamedIndividual>
     
 
@@ -2661,8 +2566,6 @@
 
     <owl:NamedIndividual rdf:about="http://web.cs.miami.edu/home/dver751/csc751/pokemon#mvRapidSpin">
         <rdf:type rdf:resource="http://web.cs.miami.edu/home/dver751/csc751/pokemon#Moves"/>
-        <hasMoveAccuracy rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">100</hasMoveAccuracy>
-        <hasMovePower rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">50</hasMovePower>
     </owl:NamedIndividual>
     
 
@@ -2703,7 +2606,6 @@
 
     <owl:NamedIndividual rdf:about="http://web.cs.miami.edu/home/dver751/csc751/pokemon#mvStealthRock">
         <rdf:type rdf:resource="http://web.cs.miami.edu/home/dver751/csc751/pokemon#Moves"/>
-        <hasMoveAccuracy rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">100</hasMoveAccuracy>
     </owl:NamedIndividual>
     
 
@@ -2768,32 +2670,6 @@
 
     <owl:NamedIndividual rdf:about="http://web.cs.miami.edu/home/dver751/csc751/pokemon#mvWaterfall">
         <rdf:type rdf:resource="http://web.cs.miami.edu/home/dver751/csc751/pokemon#Moves"/>
-        <hasMoveAccuracy rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">100</hasMoveAccuracy>
-        <hasMovePower rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">80</hasMovePower>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://web.cs.miami.edu/home/dver751/csc751/pokemon#natAdamant -->
-
-    <owl:NamedIndividual rdf:about="http://web.cs.miami.edu/home/dver751/csc751/pokemon#natAdamant">
-        <rdf:type rdf:resource="http://web.cs.miami.edu/home/dver751/csc751/pokemon#Natures"/>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://web.cs.miami.edu/home/dver751/csc751/pokemon#natImpish -->
-
-    <owl:NamedIndividual rdf:about="http://web.cs.miami.edu/home/dver751/csc751/pokemon#natImpish">
-        <rdf:type rdf:resource="http://web.cs.miami.edu/home/dver751/csc751/pokemon#Natures"/>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://web.cs.miami.edu/home/dver751/csc751/pokemon#natTimid -->
-
-    <owl:NamedIndividual rdf:about="http://web.cs.miami.edu/home/dver751/csc751/pokemon#natTimid">
-        <rdf:type rdf:resource="http://web.cs.miami.edu/home/dver751/csc751/pokemon#Natures"/>
     </owl:NamedIndividual>
     
 
@@ -6590,16 +6466,6 @@
     ///////////////////////////////////////////////////////////////////////////////////////
      -->
 
-    <rdf:Description>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
-        <owl:members rdf:parseType="Collection">
-            <rdf:Description rdf:about="http://web.cs.miami.edu/home/dver751/csc751/pokemon#Abilities"/>
-            <rdf:Description rdf:about="http://web.cs.miami.edu/home/dver751/csc751/pokemon#ElementalTypings"/>
-            <rdf:Description rdf:about="http://web.cs.miami.edu/home/dver751/csc751/pokemon#Items"/>
-            <rdf:Description rdf:about="http://web.cs.miami.edu/home/dver751/csc751/pokemon#Moves"/>
-            <rdf:Description rdf:about="http://web.cs.miami.edu/home/dver751/csc751/pokemon#Natures"/>
-        </owl:members>
-    </rdf:Description>
     <rdf:Description>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDifferent"/>
         <owl:distinctMembers rdf:parseType="Collection">
