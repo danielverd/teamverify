@@ -104,26 +104,29 @@ def teamReasoner(teamList):
         if classified in list(onto.FerrothornCounters.instances()):
             characteristics['FerrothornCounters'].append(classified)
 
-    graph = owlready2.default_world.as_rdflib_graph()
+    #the following code is obsolete since the addition of makeRecommendations()
+
+    #graph = owlready2.default_world.as_rdflib_graph()
+    #print(characteristics['MandibuzzCounters'])
     
-    r = list(graph.query(
-            """
-            PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-            PREFIX owl: <http://www.w3.org/2002/07/owl#>
-            PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-            PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
-            PREFIX poke: <http://web.cs.miami.edu/home/dver751/csc751/pokemon#>
-            SELECT ?species
-	            WHERE { ?subject rdf:type  poke:FerrothornCounters .
-                        ?subject poke:hasSpecies ?species }
-            """
-    ))
-    print('Consider using',str(r[0]).split('spec')[1].split('\'')[0],'to counter Ferrothorn')
+    #r = list(graph.query(
+    #        """
+    #        PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+    #        PREFIX owl: <http://www.w3.org/2002/07/owl#>
+    #        PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+    #        PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+    #        PREFIX poke: <http://web.cs.miami.edu/home/dver751/csc751/pokemon#>
+    #        SELECT ?species
+	#            WHERE { ?subject rdf:type  poke:FerrothornCounters .
+    #                    ?subject poke:hasSpecies ?species }
+    #        """
+    #))
+    #print('Consider using',str(r[0]).split('spec')[1].split('\'')[0],'to counter Ferrothorn')
     ##Remember to delete the text instance from the ontology
 
     return characteristics
 
-def teamReport(team):
+def teamReport(team,recommendations):
     print('-------Team Report-------')
     print('|Playstyle              |')
     print('-------------------------')
@@ -170,6 +173,35 @@ def teamReport(team):
     print('Ferrothorn Counters: ',[str(x.hasSpecies).split('spec')[1] for x in team['FerrothornCounters']])
     print('-------------------------')
 
+    for item in recommendations:
+        print(item)
+
+def makeRecommandations(characteristics):
+    onto = owlready2.get_ontology(os.getcwd()+'\\pokemonmeme3.owl').load()
+    with onto:
+        graph = owlready2.default_world.as_rdflib_graph()
+
+    recommendations = []
+    for role, pokemon in characteristics.items():
+        #print(role,pokemon)
+        if pokemon == []:
+            r = list(graph.query(
+                """
+                PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+                PREFIX owl: <http://www.w3.org/2002/07/owl#>
+                PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+                PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+                PREFIX poke: <http://web.cs.miami.edu/home/dver751/csc751/pokemon#>
+                SELECT ?species
+	                WHERE { ?subject rdf:type  poke:"""+role+""" .
+                            ?subject poke:hasSpecies ?species }
+            """
+            ))
+            #print('hi',r)
+            if len(r) > 0:
+                recommendations.append('Consider using '+str(r[0]).split('spec')[1].split('\'')[0]+' as a '+role)
+    
+    return recommendations
 
 if __name__ == "__main__":
     args = parseArgs()
@@ -186,9 +218,10 @@ if __name__ == "__main__":
     #print(team)
 
     team2 = teamReasoner(team)
-    teamReport(team2)
+    recom = makeRecommandations(team2)
+    teamReport(team2, recom)
 
     sys.stdout = open('result.txt','w')
     print(data,'\n')
-    teamReport(team2)
+    teamReport(team2, recom)
     sys.stdout.close()
