@@ -199,7 +199,24 @@ def makeRecommandations(characteristics):
             ))
             #print('hi',r)
             if len(r) > 0:
-                recommendations.append('Consider using '+str(r[0]).split('spec')[1].split('\'')[0]+' as a '+role)
+                recommendations.append('Consider using '+str(r[0]).split('spec')[1].split('\'')[0]+' as a '+role+'.')
+
+    numberOfRoles = {}
+    for role, pokemon in characteristics.items():
+        #print(pokemon)
+        for i in pokemon:
+            if str(i.hasSpecies) in numberOfRoles:
+                numberOfRoles[str(i.hasSpecies)] += 1
+            else:
+                numberOfRoles[str(i.hasSpecies)] = 1
+    
+    m = 100
+    mostExpendable = ''
+    for name, roles in numberOfRoles.items():
+        if roles < m:
+            m = roles
+            mostExpendable = name.split('spec')[1].split('\'')[0]
+    recommendations.append('Consider replacing '+mostExpendable+' because it fills the least roles of all Pokemon.')
     
     return recommendations
 
