@@ -29,7 +29,7 @@ def getTeamString(team, html):
     return teamList, data
 
 def teamReasoner(teamList):
-    onto = owlready2.get_ontology(os.getcwd()+'\\pokemon.owl').load()
+    onto = owlready2.get_ontology(os.getcwd()+'\\pokemonprod.owl').load()
     #team = onto.Playstyles()
 
     #debugi = 0
@@ -58,13 +58,15 @@ def teamReasoner(teamList):
 
     with onto:
         owlready2.sync_reasoner()
-    onto.save(file='pokemonmeme3.owl',format='rdfxml')
+    onto.save(file='pokemonprod.owl',format='rdfxml')
 
     characteristics = {'Off':[],'Def':[],'Rocks':[],'HazCon':[],'DefPiv':[],
                        'Walls':[],'Breakers':[],'Sweepers':[],'OffPiv':[],
                        'Screens':[], 'Ground':[], 'Water':[], 'Ghost':[], 
                        'Dark':[], 'CorviknightCounters':[], 'ToxapexCounters':[], 
-                       'MandibuzzCounters':[], 'FerrothornCounters':[]}
+                       'MandibuzzCounters':[], 'FerrothornCounters':[],
+                       'ClefableCounters':[], 'KommoOCounters':[],
+                       'HippowdonCounters':[]}
 
     for classified in classifiedList:
         if classified in list(onto.OffensivePokemon.instances()):
@@ -103,6 +105,12 @@ def teamReasoner(teamList):
             characteristics['MandibuzzCounters'].append(classified)
         if classified in list(onto.FerrothornCounters.instances()):
             characteristics['FerrothornCounters'].append(classified)
+        if classified in list(onto.ClefableCounters.instances()):
+            characteristics['ClefableCounters'].append(classified)
+        if classified in list(onto.KommoOCounters.instances()):
+            characteristics['KommoOCounters'].append(classified)
+        if classified in list(onto.HippowdonCounters.instances()):
+            characteristics['HippowdonCounters'].append(classified)
 
     #the following code is obsolete since the addition of makeRecommendations()
 
@@ -171,19 +179,25 @@ def teamReport(team,recommendations):
     print('Toxapex Counters: ',[str(x.hasSpecies).split('spec')[1] for x in team['ToxapexCounters']])
     print('Mandibuzz Counters: ',[str(x.hasSpecies).split('spec')[1] for x in team['MandibuzzCounters']])
     print('Ferrothorn Counters: ',[str(x.hasSpecies).split('spec')[1] for x in team['FerrothornCounters']])
+    print('Clefable Counters: ',[str(x.hasSpecies).split('spec')[1] for x in team['ClefableCounters']])
+    print('Kommo-O Counters: ',[str(x.hasSpecies).split('spec')[1] for x in team['KommoOCounters']])
+    print('Hippowdon Counters: ',[str(x.hasSpecies).split('spec')[1] for x in team['HippowdonCounters']])
     print('-------------------------')
 
     for item in recommendations:
         print(item)
 
 def makeRecommandations(characteristics):
-    onto = owlready2.get_ontology(os.getcwd()+'\\pokemonmeme3.owl').load()
+    onto = owlready2.get_ontology(os.getcwd()+'\\pokemonprod.owl').load()
     with onto:
         graph = owlready2.default_world.as_rdflib_graph()
 
     recommendations = []
     for role, pokemon in characteristics.items():
         #print(role,pokemon)
+        if role == 'Screens':
+            continue
+        
         if pokemon == []:
             r = list(graph.query(
                 """
@@ -232,6 +246,8 @@ if __name__ == "__main__":
         print('-- ERROR: Unsupported input format --')
         exit()
 
+    if len(team) < 6:
+        print('-- Inputted team has fewer than 6 Pokemon --')
     #print(team)
 
     team2 = teamReasoner(team)
@@ -240,5 +256,7 @@ if __name__ == "__main__":
 
     sys.stdout = open('result.txt','w')
     print(data,'\n')
+    if len(team) < 6:
+        print('-- Inputted team has fewer than 6 Pokemon --')
     teamReport(team2, recom)
     sys.stdout.close()

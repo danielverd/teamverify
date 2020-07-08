@@ -356,6 +356,32 @@
     
 
 
+    <!-- http://web.cs.miami.edu/home/dver751/csc751/pokemon#ClefableCounters -->
+
+    <owl:Class rdf:about="http://web.cs.miami.edu/home/dver751/csc751/pokemon#ClefableCounters">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://web.cs.miami.edu/home/dver751/csc751/pokemon#Pokemon"/>
+                    <owl:Class>
+                        <owl:unionOf rdf:parseType="Collection">
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="http://web.cs.miami.edu/home/dver751/csc751/pokemon#hasCompTyping"/>
+                                <owl:hasValue rdf:resource="http://web.cs.miami.edu/home/dver751/csc751/pokemon#tyPoison"/>
+                            </owl:Restriction>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="http://web.cs.miami.edu/home/dver751/csc751/pokemon#hasCompTyping"/>
+                                <owl:hasValue rdf:resource="http://web.cs.miami.edu/home/dver751/csc751/pokemon#tySteel"/>
+                            </owl:Restriction>
+                        </owl:unionOf>
+                    </owl:Class>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    
+
+
     <!-- http://web.cs.miami.edu/home/dver751/csc751/pokemon#CorviknightCounters -->
 
     <owl:Class rdf:about="http://web.cs.miami.edu/home/dver751/csc751/pokemon#CorviknightCounters">
@@ -1413,6 +1439,36 @@
     
 
 
+    <!-- http://web.cs.miami.edu/home/dver751/csc751/pokemon#HippowdonCounters -->
+
+    <owl:Class rdf:about="http://web.cs.miami.edu/home/dver751/csc751/pokemon#HippowdonCounters">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://web.cs.miami.edu/home/dver751/csc751/pokemon#Pokemon"/>
+                    <owl:Class>
+                        <owl:unionOf rdf:parseType="Collection">
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="http://web.cs.miami.edu/home/dver751/csc751/pokemon#hasCompTyping"/>
+                                <owl:hasValue rdf:resource="http://web.cs.miami.edu/home/dver751/csc751/pokemon#tyGrass"/>
+                            </owl:Restriction>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="http://web.cs.miami.edu/home/dver751/csc751/pokemon#hasCompTyping"/>
+                                <owl:hasValue rdf:resource="http://web.cs.miami.edu/home/dver751/csc751/pokemon#tyIce"/>
+                            </owl:Restriction>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="http://web.cs.miami.edu/home/dver751/csc751/pokemon#hasCompTyping"/>
+                                <owl:hasValue rdf:resource="http://web.cs.miami.edu/home/dver751/csc751/pokemon#tyWater"/>
+                            </owl:Restriction>
+                        </owl:unionOf>
+                    </owl:Class>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    
+
+
     <!-- http://web.cs.miami.edu/home/dver751/csc751/pokemon#HyperOffenseTeams -->
 
     <owl:Class rdf:about="http://web.cs.miami.edu/home/dver751/csc751/pokemon#HyperOffenseTeams">
@@ -1498,6 +1554,44 @@
 
     <owl:Class rdf:about="http://web.cs.miami.edu/home/dver751/csc751/pokemon#Items">
         <rdfs:subClassOf rdf:resource="http://web.cs.miami.edu/home/dver751/csc751/pokemon#GameMechanics"/>
+    </owl:Class>
+    
+
+
+    <!-- http://web.cs.miami.edu/home/dver751/csc751/pokemon#KommoOCounters -->
+
+    <owl:Class rdf:about="http://web.cs.miami.edu/home/dver751/csc751/pokemon#KommoOCounters">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://web.cs.miami.edu/home/dver751/csc751/pokemon#Pokemon"/>
+                    <owl:Class>
+                        <owl:unionOf rdf:parseType="Collection">
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="http://web.cs.miami.edu/home/dver751/csc751/pokemon#hasCompTyping"/>
+                                <owl:hasValue rdf:resource="http://web.cs.miami.edu/home/dver751/csc751/pokemon#tyDragon"/>
+                            </owl:Restriction>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="http://web.cs.miami.edu/home/dver751/csc751/pokemon#hasCompTyping"/>
+                                <owl:hasValue rdf:resource="http://web.cs.miami.edu/home/dver751/csc751/pokemon#tyFairy"/>
+                            </owl:Restriction>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="http://web.cs.miami.edu/home/dver751/csc751/pokemon#hasCompTyping"/>
+                                <owl:hasValue rdf:resource="http://web.cs.miami.edu/home/dver751/csc751/pokemon#tyFlying"/>
+                            </owl:Restriction>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="http://web.cs.miami.edu/home/dver751/csc751/pokemon#hasCompTyping"/>
+                                <owl:hasValue rdf:resource="http://web.cs.miami.edu/home/dver751/csc751/pokemon#tyIce"/>
+                            </owl:Restriction>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="http://web.cs.miami.edu/home/dver751/csc751/pokemon#hasCompTyping"/>
+                                <owl:hasValue rdf:resource="http://web.cs.miami.edu/home/dver751/csc751/pokemon#tyPsychic"/>
+                            </owl:Restriction>
+                        </owl:unionOf>
+                    </owl:Class>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
     </owl:Class>
     
 
@@ -2958,15 +3052,6 @@
 
     <owl:NamedIndividual rdf:about="http://web.cs.miami.edu/home/dver751/csc751/pokemon#pkzWaterAbsorb">
         <rdf:type rdf:resource="http://web.cs.miami.edu/home/dver751/csc751/pokemon#Abilities"/>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://web.cs.miami.edu/home/dver751/csc751/pokemon#pokemon1234 -->
-
-    <owl:NamedIndividual rdf:about="http://web.cs.miami.edu/home/dver751/csc751/pokemon#pokemon1234">
-        <rdf:type rdf:resource="http://web.cs.miami.edu/home/dver751/csc751/pokemon#FerrothornCounters"/>
-        <hasSpecies rdf:resource="http://web.cs.miami.edu/home/dver751/csc751/pokemon#specChandelure"/>
     </owl:NamedIndividual>
     
 

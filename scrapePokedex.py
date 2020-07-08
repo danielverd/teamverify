@@ -1,4 +1,3 @@
-import requests
 import time
 from bs4 import BeautifulSoup
 from selenium import webdriver
@@ -17,7 +16,7 @@ def scrollPage(path,gen='ss'):
     newHeight = height
 
     scrolls = 0
-    while scrolls < 80:
+    while scrolls < 120:
         scrapeDex(driver.page_source,csv_writer)
         driver.execute_script("window.scrollTo(0, "+str(newHeight)+");")
         time.sleep(0.1)
