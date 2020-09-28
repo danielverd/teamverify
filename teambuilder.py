@@ -3,10 +3,12 @@ import argparse
 import os
 import sys
 import owlready2
+import pandas as pd
 
 def parseArgs():
     parser = argparse.ArgumentParser(description="Reads in Pokemon team from stdin.")
     parser.add_argument("team", help="txt file containing team")
+    parser.add_argument("output", help="name to of txt file to export results")
     return parser.parse_args()
 
 def getTeamString(team, html):
@@ -30,6 +32,7 @@ def getTeamString(team, html):
 
 def teamReasoner(teamList):
     onto = owlready2.get_ontology(os.getcwd()+'\\pokemonprod.owl').load()
+    df = pd.read_csv(('competitivePokedex.csv'))
     #team = onto.Playstyles()
 
     #debugi = 0
@@ -46,6 +49,10 @@ def teamReasoner(teamList):
         newPokemon.hasSpDEVs = pokemon['SpDEVs']
         newPokemon.hasSpeEVs = pokemon['SpeEVs']
 
+        row = df.loc[df['Pokemon'] == pokemon['Species']]
+        spe = row.iloc[0]['Spe']
+        newPokemon.hasBaseSpeed.append(int(spe))
+
         newPokemon.hasMove.append(onto.Moves('mv'+pokemon['Move1']))
         newPokemon.hasMove.append(onto.Moves('mv'+pokemon['Move2']))
         newPokemon.hasMove.append(onto.Moves('mv'+pokemon['Move3']))
@@ -58,7 +65,7 @@ def teamReasoner(teamList):
 
     with onto:
         owlready2.sync_reasoner()
-    onto.save(file='pokemonprod.owl',format='rdfxml')
+    #onto.save(file='pokemonprod.owl',format='rdfxml')
 
     characteristics = {'Off':[],'Def':[],'Rocks':[],'HazCon':[],'DefPiv':[],
                        'Walls':[],'Breakers':[],'Sweepers':[],'OffPiv':[],
@@ -234,6 +241,20 @@ def makeRecommandations(characteristics):
     
     return recommendations
 
+def teamScore(teamDict):
+    #print(teamDict)
+
+    score = 0.0
+
+    for key, value in teamDict.items():
+        #print(key, len(value))
+        count = 1
+        for _ in value:
+            score += (1/count)
+            count += 1
+    print('Team Score: ',score)
+    return score
+
 if __name__ == "__main__":
     args = parseArgs()
 
@@ -252,11 +273,13 @@ if __name__ == "__main__":
 
     team2 = teamReasoner(team)
     recom = makeRecommandations(team2)
+    score = teamScore(team2)
     teamReport(team2, recom)
 
-    sys.stdout = open('result.txt','w')
+    sys.stdout = open(str(args.output) + '.txt','w')
     print(data,'\n')
     if len(team) < 6:
         print('-- Inputted team has fewer than 6 Pokemon --')
     teamReport(team2, recom)
+    print('Team Score: ',score)
     sys.stdout.close()
