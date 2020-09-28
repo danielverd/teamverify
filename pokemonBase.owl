@@ -2444,7 +2444,7 @@
                                         <owl:onDatatype rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
                                         <owl:withRestrictions rdf:parseType="Collection">
                                             <rdf:Description>
-                                                <xsd:minInclusive rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">252</xsd:minInclusive>
+                                                <xsd:minInclusive rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">172</xsd:minInclusive>
                                             </rdf:Description>
                                         </owl:withRestrictions>
                                     </rdfs:Datatype>
@@ -2457,7 +2457,7 @@
                                         <owl:onDatatype rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
                                         <owl:withRestrictions rdf:parseType="Collection">
                                             <rdf:Description>
-                                                <xsd:minInclusive rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">252</xsd:minInclusive>
+                                                <xsd:minInclusive rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">172</xsd:minInclusive>
                                             </rdf:Description>
                                         </owl:withRestrictions>
                                     </rdfs:Datatype>
