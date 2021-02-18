@@ -127,11 +127,11 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
-pokemonmeme3.owl
+
+#development artifacts
 reasoner.py
 prepareOntology.py
 result.txt
-pokemonexperimental.owl
 teamtest2.txt
-pokemonprod1.owl
 testResults/
+output.txt
