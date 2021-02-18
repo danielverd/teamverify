@@ -51,6 +51,22 @@ def parseTeam(teamString):
         teamList.append(currentPokemonDict)
     return teamList
 
+def removeHtmlTags(html):
+    clean = re.compile('<.*?>')
+    return re.sub(clean,'',html)
+
+def getPokepaste(url):
+    import requests
+    response = requests.get(url)
+    teamString = removeHtmlTags(response.text)
+
+    teamTemp = parseTeam(teamString)
+    teamList = []
+    for item in teamTemp:
+        if item:
+            teamList.append(item)
+    return teamList, teamString
+
 
 if __name__ == "__main__":
     exampleSet = """Tyranitar (M) @ Assault Vest  
@@ -119,5 +135,9 @@ if __name__ == "__main__":
     - Overdrive  
     - Boomburst  
     """
-    print(parseTeam(exampleSet))
-    print(parseTeam(exampleTeam))
+
+    webExample = 'https://pokepast.es/8c28cd9d9febe492'
+
+    print(parseTeam(exampleSet),'\n')
+    print(parseTeam(exampleTeam),'\n')
+    print(getPokepaste(webExample)[0])

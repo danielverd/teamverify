@@ -1,4 +1,4 @@
-from readTeamSyntax import parseTeam
+from readTeamSyntax import parseTeam, getPokepaste
 import argparse
 import os
 import sys
@@ -19,13 +19,12 @@ def getTeamString(team, html):
     html -- true if the team is given as a webpage, false if given as text
     """
     if html:
-        print('-- ERROR: HTML parsing not yet supported --')
-        exit()
+        teamList, data = getPokepaste(team)
     else:
         with open(team,'r') as textfile:
             data = textfile.read()
     
-    teamList = parseTeam(data)
+        teamList = parseTeam(data)
     
     #print(type(data))
     return teamList, data
@@ -249,9 +248,16 @@ def teamScore(teamDict):
     for key, value in teamDict.items():
         #print(key, len(value))
         count = 1
-        for _ in value:
-            score += (1/count)
-            count += 1
+        if key in ['DefPiv','Walls','Breakers','Sweepers','OffPiv']:
+            for _ in value:
+                score += 1
+                count += 1
+        elif key in ['Off','Def']:
+            pass
+        else:
+            for _ in value:
+                score += (1/count)
+                count += 1
     print('Team Score: ',score)
     return score
 
