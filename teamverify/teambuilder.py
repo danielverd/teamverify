@@ -8,7 +8,7 @@ import pandas as pd
 def parseArgs():
     parser = argparse.ArgumentParser(description="Reads in Pokemon team from stdin.")
     parser.add_argument("team", help="txt file containing team")
-    parser.add_argument("output", help="name to of txt file to export results")
+    parser.add_argument("output", default= 'teamverify-out', help="name to of txt file to export results")
     return parser.parse_args()
 
 def getTeamString(team, html):

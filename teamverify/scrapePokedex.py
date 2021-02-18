@@ -58,5 +58,7 @@ if __name__ == '__main__':
     genkey = 'ss'
     path = 'C:\\Program Files\\Mozilla Geckodriver\\geckodriver.exe'
 
+    print('Populating the Competitive Pokedex. This may take a few minutes.')
+    print('If a browser window opens, do not touch it.')
     scrollPage(path,genkey)
     print('Success!')
