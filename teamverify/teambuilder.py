@@ -1,9 +1,11 @@
-from readTeamSyntax import parseTeam, getPokepaste
+from teamverify.readTeamSyntax import parseTeam, getPokepaste
 import argparse
 import os
 import sys
 import owlready2
 import pandas as pd
+
+dirpath, _ = os.path.split(__file__)
 
 def parseArgs():
     parser = argparse.ArgumentParser(description="Reads in Pokemon team from stdin.")
@@ -30,8 +32,8 @@ def getTeamString(team, html):
     return teamList, data
 
 def teamReasoner(teamList):
-    onto = owlready2.get_ontology(os.getcwd()+'\\pokemonprod.owl').load()
-    df = pd.read_csv(('competitivePokedex.csv'))
+    onto = owlready2.get_ontology(os.path.join(dirpath,"pokemonprod.owl")).load()
+    df = pd.read_csv(os.path.join(dirpath,'competitivePokedex.csv'))
     #team = onto.Playstyles()
 
     #debugi = 0
@@ -194,7 +196,7 @@ def teamReport(team,recommendations):
         print(item)
 
 def makeRecommandations(characteristics):
-    onto = owlready2.get_ontology(os.getcwd()+'\\pokemonprod.owl').load()
+    onto = owlready2.get_ontology(os.path.join(dirpath,"pokemonprod.owl")).load()
     with onto:
         graph = owlready2.default_world.as_rdflib_graph()
 

@@ -1,14 +1,20 @@
 import time
+import os
 from bs4 import BeautifulSoup
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 import csv
 
+dirpath, _ = os.path.split(__file__)
+
 def scrollPage(path,gen='ss'):
+    print('Populating the Competitive Pokedex. This may take a few minutes.')
+    print('If a browser window opens, do not touch it.')
+
     driver = webdriver.Firefox(executable_path=path)
     driver.get('https://www.smogon.com/dex/'+gen+'/pokemon/')
 
-    csv_file = open('competitivePokedex.csv','w')
+    csv_file = open(os.path.join(dirpath,'competitivePokedex.csv'),'w')
     csv_writer = csv.writer(csv_file)
     csv_writer.writerow(['Pokemon','Type1','Type2','Tier','HP','Atk','Def','SpA','SpD','Spe'])
 
@@ -24,6 +30,7 @@ def scrollPage(path,gen='ss'):
         newHeight += height
 
     csv_file.close()
+    print('Success!')
 
 def scrapeDex(source,csv_writer):
     soup = BeautifulSoup(source,'lxml')
@@ -58,7 +65,4 @@ if __name__ == '__main__':
     genkey = 'ss'
     path = 'C:\\Program Files\\Mozilla Geckodriver\\geckodriver.exe'
 
-    print('Populating the Competitive Pokedex. This may take a few minutes.')
-    print('If a browser window opens, do not touch it.')
     scrollPage(path,genkey)
-    print('Success!')
