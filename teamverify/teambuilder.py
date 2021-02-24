@@ -69,11 +69,11 @@ def teamReasoner(teamList):
     #onto.save(file='pokemonprod.owl',format='rdfxml')
 
     characteristics = {'Off':[],'Def':[],'Rocks':[],'HazCon':[],'DefPiv':[],
-                       'Walls':[],'Breakers':[],'Sweepers':[],'OffPiv':[],
+                       'Walls':[],'Breakers':[],'Sweepers':[],'OffPiv':[],'Stallbreakers':[],
                        'Screens':[], 'Ground':[], 'Water':[], 'Ghost':[], 
-                       'Dark':[], 'CorviknightCounters':[], 'ToxapexCounters':[], 
+                       'Dark':[],'Fire':[],'Grass':[],'CorviknightCounters':[], 'ToxapexCounters':[], 
                        'MandibuzzCounters':[], 'FerrothornCounters':[],
-                       'ClefableCounters':[], 'KommoOCounters':[],
+                       'ClefableCounters':[], 'MoltresCounters':[],'SlowbroCounters':[],'ZapdosCounters':[],
                        'HippowdonCounters':[]}
 
     for classified in classifiedList:
@@ -97,6 +97,8 @@ def teamReasoner(teamList):
             characteristics['OffPiv'].append(classified)
         if classified in list(onto.ScreenSetters.instances()):
             characteristics['Screens'].append(classified)
+        if classified in list(onto.Stallbreakers.instances()):
+            characteristics['Stallbreakers'].append(classified)
         if classified in list(onto.GroundResists.instances()):
             characteristics['Ground'].append(classified)
         if classified in list(onto.WaterResists.instances()):
@@ -105,6 +107,10 @@ def teamReasoner(teamList):
             characteristics['Ghost'].append(classified)
         if classified in list(onto.DarkResists.instances()):
             characteristics['Dark'].append(classified)
+        if classified in list(onto.FireResists.instances()):
+            characteristics['Fire'].append(classified)
+        if classified in list(onto.GrassResists.instances()):
+            characteristics['Grass'].append(classified)
         if classified in list(onto.CorviknightCounters.instances()):
             characteristics['CorviknightCounters'].append(classified)
         if classified in list(onto.ToxapexCounters.instances()):
@@ -115,10 +121,14 @@ def teamReasoner(teamList):
             characteristics['FerrothornCounters'].append(classified)
         if classified in list(onto.ClefableCounters.instances()):
             characteristics['ClefableCounters'].append(classified)
-        if classified in list(onto.KommoOCounters.instances()):
-            characteristics['KommoOCounters'].append(classified)
+        if classified in list(onto.MoltresCounters.instances()):
+            characteristics['MoltresCounters'].append(classified)
+        if classified in list(onto.SlowbroCounters.instances()):
+            characteristics['SlowbroCounters'].append(classified)
         if classified in list(onto.HippowdonCounters.instances()):
             characteristics['HippowdonCounters'].append(classified)
+        if classified in list(onto.ZapdosCounters.instances()):
+            characteristics['ZapdosCounters'].append(classified)
 
     #the following code is obsolete since the addition of makeRecommendations()
 
@@ -173,6 +183,7 @@ def teamReport(team,recommendations):
     print('Stealth Rockers: ',[str(x.hasSpecies).split('spec')[1] for x in team['Rocks']])
     print('Hazard Control: ',[str(x.hasSpecies).split('spec')[1] for x in team['HazCon']])
     print('Screen Setters: ',[str(x.hasSpecies).split('spec')[1] for x in team['Screens']])
+    print('Stallbreakers: ',[str(x.hasSpecies).split('spec')[1] for x in team['Stallbreakers']])
     print('-------------------------')
     print('|Essential Switch-ins   |')
     print('-------------------------')
@@ -180,6 +191,8 @@ def teamReport(team,recommendations):
     print('Water Resists: ',[str(x.hasSpecies).split('spec')[1] for x in team['Water']])
     print('Ghost Resists: ',[str(x.hasSpecies).split('spec')[1] for x in team['Ghost']])
     print('Dark Resists: ',[str(x.hasSpecies).split('spec')[1] for x in team['Dark']])
+    print('Fire Resists: ',[str(x.hasSpecies).split('spec')[1] for x in team['Fire']])
+    print('Grass Resists: ',[str(x.hasSpecies).split('spec')[1] for x in team['Grass']])
     print('-------------------------')
     print('|Essential Counters     |')
     print('-------------------------')
@@ -188,8 +201,10 @@ def teamReport(team,recommendations):
     print('Mandibuzz Counters: ',[str(x.hasSpecies).split('spec')[1] for x in team['MandibuzzCounters']])
     print('Ferrothorn Counters: ',[str(x.hasSpecies).split('spec')[1] for x in team['FerrothornCounters']])
     print('Clefable Counters: ',[str(x.hasSpecies).split('spec')[1] for x in team['ClefableCounters']])
-    print('Kommo-O Counters: ',[str(x.hasSpecies).split('spec')[1] for x in team['KommoOCounters']])
+    print('Moltres Counters: ',[str(x.hasSpecies).split('spec')[1] for x in team['MoltresCounters']])
     print('Hippowdon Counters: ',[str(x.hasSpecies).split('spec')[1] for x in team['HippowdonCounters']])
+    print('Slowbro Counters: ',[str(x.hasSpecies).split('spec')[1] for x in team['SlowbroCounters']])
+    print('Zapdos Counters: ',[str(x.hasSpecies).split('spec')[1] for x in team['ZapdosCounters']])
     print('-------------------------')
 
     for item in recommendations:
