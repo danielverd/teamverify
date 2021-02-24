@@ -1,1 +1,4 @@
-fs
+include teamverify\*
+include README.md
+include testTeam.txt
+include LICENSE
