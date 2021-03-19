@@ -19,7 +19,7 @@ def parseTeam(teamString):
                 pass
             if '@' in attribute:
                 attribute = attribute.split('@')
-                currentPokemonDict['Species'] = attribute[0].strip()
+                currentPokemonDict['Species'] = attribute[0].strip().replace(' ','')
                 if '(' in currentPokemonDict['Species']:
                     currentPokemonDict['Species'] = re.search(r'\(([^)]+)', currentPokemonDict['Species']).group(1)
                     if len(currentPokemonDict['Species']) == 1:
