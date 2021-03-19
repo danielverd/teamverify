@@ -56,13 +56,13 @@ def scrapeDex(source,csv_writer):
     
         row = [name,elementaltypes[0],elementaltypes[1],tier,hp,atk,dfs,spa,spd,spe]
     
-        if tier not in ['NFE','LC','Uber','','CAP','National Dex']:
+        if tier not in ['NFE','LC','Uber','','CAP','National Dex','AG']:
             csv_writer.writerow(row)
        
         #print(row)
 
 if __name__ == '__main__':
     genkey = 'ss'
-    path = 'C:\\Program Files\\Mozilla Geckodriver\\geckodriver.exe'
+    path = os.path.join(dirpath,'geckodriver.exe')
 
     scrollPage(path,genkey)

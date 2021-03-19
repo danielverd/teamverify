@@ -1,4 +1,4 @@
-from teamverify.readTeamSyntax import parseTeam, getPokepaste
+from readTeamSyntax import parseTeam, getPokepaste
 import argparse
 import os
 import sys
@@ -9,7 +9,7 @@ dirpath, _ = os.path.split(__file__)
 
 def parseArgs():
     parser = argparse.ArgumentParser(description="Reads in Pokemon team from stdin.")
-    parser.add_argument("team", help="txt file containing team")
+    parser.add_argument("team", help="txt file or url containing team")
     parser.add_argument("output", default= 'teamverify-out', help="name to of txt file to export results")
     return parser.parse_args()
 
@@ -37,6 +37,8 @@ def teamReasoner(teamList):
     #team = onto.Playstyles()
 
     #debugi = 0
+
+    print(teamList[0])
     classifiedList = []
     for pokemon in teamList:
         newPokemon = onto.Pokemon()
@@ -278,13 +280,13 @@ def teamScore(teamDict):
     print('Team Score: ',score)
     return score
 
-if __name__ == "__main__":
+def main():
     args = parseArgs()
 
     if 'pokepast.es' in args.team:
         team, data = getTeamString(args.team,True)
     elif '.txt' in args.team:
-        teamPath = os.getcwd()+'\\'+args.team
+        #teamPath = os.getcwd()+'\\'+args.team
         team, data= getTeamString(args.team,False)
     else:
         print('-- ERROR: Unsupported input format --')
@@ -306,3 +308,7 @@ if __name__ == "__main__":
     teamReport(team2, recom)
     print('Team Score: ',score)
     sys.stdout.close()
+
+
+if __name__ == "__main__":
+    main()
