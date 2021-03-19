@@ -20,9 +20,9 @@ setuptools.setup(
     python_requires='>=3.6',
     include_package_data=True,
     install_requires=[
-        'owlready2==0.23'
-        'selenium'
-        'pandas'
+        'owlready2>=0.23',
+        'selenium',
+        'pandas',
         'beautifulsoup4'
     ],
     entry_points={
