@@ -38,7 +38,6 @@ def teamReasoner(teamList):
 
     #debugi = 0
 
-    print(teamList[0])
     classifiedList = []
     for pokemon in teamList:
         newPokemon = onto.Pokemon()
@@ -209,8 +208,9 @@ def teamReport(team,recommendations):
     print('Zapdos Counters: ',[str(x.hasSpecies).split('spec')[1] for x in team['ZapdosCounters']])
     print('-------------------------')
 
-    for item in recommendations:
-        print(item)
+    #for item in recommendations:
+        #print(item)
+        #recommendations are very basic and not helpful, so we're scrapping this function for now
 
 def makeRecommandations(characteristics):
     onto = owlready2.get_ontology(os.path.join(dirpath,"pokemonprod.owl")).load()
