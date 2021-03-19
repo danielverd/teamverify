@@ -17,14 +17,6 @@ We also advise that you re-run this command whenever Smogon implements a major t
 
 ## Usage
 ```
-teamverify {txt/pokepaste} [outputfile]
+teamverify {txt/pokepaste} {outputfile}
 ```
-
-
-### Old readme, slated for deletion
-
-This repository contains all code for my automated pokemon teambuilder project. Descriptions of individual files will be added as new files are created. This automated Pokemon teambuilder is based on OWL ontologies for automated reasoning.
-
-readTeamSyntax - contains the parseTeam function, which reads teams in the text format provided by Pokemon Showdown or PokePaste and returns it in dictionary form.
-
-scrapePokedex - contains the scrollPage and scrapeDex functions, which use Selenium webdrivers to populate a competitivePokedex.csv file. This file contains several details key to deriving semantic concepts within competitive Pokemon teams.
+Once installed, teamVerify can be invoked with the above command to the command line. TeamVerify works on one OU team at a time and produces console output as well as output to a text file. {txt/pokepaste} is a mandatory argument and should be the filename of a .txt file containing the team or a link to pokepast.es. {outputfile} is also a mandatory argument and should be the name of the output file you want created (output will have .txt appended to it, so don't include a file extension).
