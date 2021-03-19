@@ -7,7 +7,7 @@ setuptools.setup(
     name='teamverify',
     version='0.0.1',
     author='danielverd',
-    description='',
+    description='Automated reasoning tool for competitive Pokemon teambuilding',
     long_description=long_description,
     long_description_content_type='text/markdown',
     url='https://github.com/danielverd/teamverify',
@@ -24,6 +24,11 @@ setuptools.setup(
         'selenium'
         'pandas'
         'beautifulsoup4'
-
-    ]
+    ],
+    entry_points={
+        'console_scripts':[
+            'teamverify = teamverify.teambuilder:main',
+            'teamverify-fts = teamverify.prepareOntology:main'
+        ]
+    }
 )
