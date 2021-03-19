@@ -130,8 +130,8 @@ dmypy.json
 
 #development artifacts
 reasoner.py
-prepareOntology.py
 result.txt
 teamtest2.txt
 testResults/
 output.txt
+teamverify/reasonertest.py
