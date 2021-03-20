@@ -1,4 +1,4 @@
-from readTeamSyntax import parseTeam, getPokepaste
+from teamverify.readTeamSyntax import parseTeam, getPokepaste
 import argparse
 import os
 import sys

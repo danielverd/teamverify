@@ -1,7 +1,7 @@
 import os
 import owlready2
 import pandas as pd
-import scrapePokedex
+from teamverify import scrapePokedex
 
 #owlready2.set_log_level(9)
 
