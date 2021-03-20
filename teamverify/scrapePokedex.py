@@ -31,6 +31,7 @@ def scrollPage(path,gen='ss'):
 
     csv_file.close()
     print('Success!')
+    print('You may now close the browser window.')
 
 def scrapeDex(source,csv_writer):
     soup = BeautifulSoup(source,'lxml')
@@ -40,6 +41,7 @@ def scrapeDex(source,csv_writer):
         elementaltypes = []
 
         name = pokemon.find('div',class_='PokemonAltRow-name').text
+        name = name.replace(' ','')
         tier = pokemon.find('div',class_='PokemonAltRow-tags').text
         hp = pokemon.find('div',class_='PokemonAltRow-hp').span.text
         atk = pokemon.find('div',class_='PokemonAltRow-atk').span.text

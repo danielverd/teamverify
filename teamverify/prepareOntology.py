@@ -22,7 +22,7 @@ def main():
     #newPokemon = onto.Pokemon()
     #print(newPokemon)
 
-    tiers = ['OU','UU']
+    tiers = ['OU','UU','UUBL']
 
     df = df[df['Tier'].isin(tiers)]
 
