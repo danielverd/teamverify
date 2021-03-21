@@ -40,6 +40,7 @@ def teamReasoner(teamList):
 
     classifiedList = []
     for pokemon in teamList:
+        #print(pokemon)
         newPokemon = onto.Pokemon()
         newPokemon.hasSpecies = onto.Pokemon('spec'+pokemon['Species'])
         newPokemon.hasItem = onto.Items('it'+pokemon['Item'])
@@ -62,7 +63,7 @@ def teamReasoner(teamList):
 
         classifiedList.append(newPokemon)
         #debugi+=1
-        #if debugi > 1:
+        #if debugi > 5:
         #    break
 
     with onto:
@@ -287,7 +288,7 @@ def main():
         team, data = getTeamString(args.team,True)
     elif '.txt' in args.team:
         #teamPath = os.getcwd()+'\\'+args.team
-        team, data= getTeamString(args.team,False)
+        team, data = getTeamString(args.team,False)
     else:
         print('-- ERROR: Unsupported input format --')
         exit()
@@ -302,7 +303,8 @@ def main():
     teamReport(team2, recom)
 
     sys.stdout = open(str(args.output) + '.txt','w')
-    print(data,'\n')
+    #print(data,'\n')
+    print(args.team,'\n')
     if len(team) < 6:
         print('-- Inputted team has fewer than 6 Pokemon --')
     teamReport(team2, recom)

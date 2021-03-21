@@ -9,10 +9,13 @@ def parseTeam(teamString):
     pokemonList = teamString.split('\n\n')
 
     teamList = []
+    #print(pokemonList)
     for pokemon in pokemonList:
         currentPokemonDict = {}
         moveCounter = 1
         currentPokemon = pokemon.split('\n')
+        if 'Ability' not in pokemon:
+            continue
         
         for attribute in currentPokemon:
             if 'Happiness:' or 'IVs:' or 'Shiny:' in attribute:
@@ -58,7 +61,7 @@ def removeHtmlTags(html):
 def getPokepaste(url):
     import requests
     response = requests.get(url)
-    teamString = removeHtmlTags(response.text)
+    teamString = removeHtmlTags(response.text).replace('\t','')
 
     teamTemp = parseTeam(teamString)
     teamList = []

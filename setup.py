@@ -5,7 +5,7 @@ with open('README.md', 'r', encoding='utf-8') as fh:
 
 setuptools.setup(
     name='teamverify',
-    version='0.0.2',
+    version='0.0.3',
     author='danielverd',
     description='Automated reasoning tool for competitive Pokemon teambuilding',
     long_description=long_description,
