@@ -154,7 +154,8 @@ def teamReasoner(teamList):
 
     return characteristics
 
-def teamReport(team,recommendations):
+#def teamReport(team,recommendations):
+def teamReport(team):
     print('-------Team Report-------')
     print('|Playstyle              |')
     print('-------------------------')
@@ -298,16 +299,16 @@ def main():
     #print(team)
 
     team2 = teamReasoner(team)
-    recom = makeRecommandations(team2)
+    #recom = makeRecommandations(team2)
     score = teamScore(team2)
-    teamReport(team2, recom)
+    teamReport(team2)
 
     sys.stdout = open(str(args.output) + '.txt','w')
     #print(data,'\n')
     print(args.team,'\n')
     if len(team) < 6:
         print('-- Inputted team has fewer than 6 Pokemon --')
-    teamReport(team2, recom)
+    teamReport(team2)
     print('Team Score: ',score)
     sys.stdout.close()
 
