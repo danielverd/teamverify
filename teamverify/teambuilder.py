@@ -285,10 +285,10 @@ def main():
     args = parseArgs()
 
     if 'pokepast.es' in args.team:
-        team, data = getTeamString(args.team,True)
+        team, _ = getTeamString(args.team,True)
     elif '.txt' in args.team:
         #teamPath = os.getcwd()+'\\'+args.team
-        team, data = getTeamString(args.team,False)
+        team, _ = getTeamString(args.team,False)
     else:
         print('-- ERROR: Unsupported input format --')
         exit()
