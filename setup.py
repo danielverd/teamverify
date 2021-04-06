@@ -5,7 +5,7 @@ with open('README.md', 'r', encoding='utf-8') as fh:
 
 setuptools.setup(
     name='teamverify',
-    version='0.0.4',
+    version='0.0.5',
     author='danielverd',
     description='Automated reasoning tool for competitive Pokemon teambuilding',
     long_description=long_description,
@@ -23,7 +23,8 @@ setuptools.setup(
         'owlready2>=0.23',
         'selenium',
         'pandas',
-        'beautifulsoup4'
+        'beautifulsoup4',
+        'requests'
     ],
     entry_points={
         'console_scripts':[
