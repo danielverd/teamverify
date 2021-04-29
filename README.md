@@ -4,6 +4,8 @@ TeamVerify is a Competitive Pokemon teambuilding companion tool based on automat
 
 ## Installation
 
+Before installing TeamVerify, you need to have Java installed. The reasoner underneath TeamVerify was written in Java, so the program will crash if it tries to run without Java.
+
 TeamVerify is listed on the PyPI repository. Therefore, it is an easy install for anyone already running Python. Ensure you have a working distribution of Python 3.6 or higher then run the following command in a terminal window:
 ```
 pip install teamverify

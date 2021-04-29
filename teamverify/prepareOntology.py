@@ -6,7 +6,6 @@ from teamverify import scrapePokedex
 #owlready2.set_log_level(9)
 
 dirpath, _ = os.path.split(__file__)
-owlready2.JAVA_EXE = os.path.join(dirpath,"java.exe")
 
 def main():
     path = os.path.join(dirpath,'geckodriver.exe')

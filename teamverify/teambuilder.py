@@ -6,7 +6,6 @@ import owlready2
 import pandas as pd
 
 dirpath, _ = os.path.split(__file__)
-owlready2.JAVA_EXE = os.path.join(dirpath,"java.exe")
 
 def parseArgs():
     parser = argparse.ArgumentParser(description="Reads in Pokemon team from stdin.")
